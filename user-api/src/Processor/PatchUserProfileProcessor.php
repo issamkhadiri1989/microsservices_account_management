@@ -12,7 +12,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
-
 final readonly class PatchUserProfileProcessor implements ProcessorInterface
 {
     use UserAwareTrait;
@@ -20,7 +19,7 @@ final readonly class PatchUserProfileProcessor implements ProcessorInterface
     public function __construct(
         #[Autowire(service: 'api_platform.doctrine.orm.state.persist_processor')] private ProcessorInterface $persistProcessor,
         private Security $security,
-        private  EntityManagerInterface $entityManager,
+        private EntityManagerInterface $entityManager,
     ) {
     }
 
@@ -28,7 +27,7 @@ final readonly class PatchUserProfileProcessor implements ProcessorInterface
     {
         $user = $this->getUser();
 
-        if ($data instanceof UpdatePRofileRequest) {
+        if ($data instanceof UpdateProfileRequest) {
             $user->setFirstName($data->firstName)
                 ->setLastName($data->lastName);
 

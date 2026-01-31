@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Validator\Constraint;
 
 use Symfony\Component\Validator\Constraint;
@@ -25,7 +27,7 @@ class PasswordValidator extends ConstraintValidator
             throw new UnexpectedValueException($value, 'string');
         }
 
-        if (\preg_match(subject: $value,  pattern: self::PATTERN) === 1) { // the password matches the pattern
+        if (1 === \preg_match(subject: $value, pattern: self::PATTERN)) { // the password matches the pattern
             return;
         }
 

@@ -13,7 +13,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class AccountChecker implements UserCheckerInterface
 {
-
     public function checkPreAuth(UserInterface $user): void
     {
         if (!$user instanceof User) {

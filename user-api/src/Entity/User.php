@@ -35,7 +35,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
         new Get(
             uriTemplate: '/profile',
             provider: CurrentUserProvider::class,
-        )
+        ),
     ]
 )]
 #[UniqueEntity(fields: ['email'], message: 'The email address already used.')]
@@ -251,7 +251,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function isExpired(): bool
     {
-        if ($this->getExpiryDate() === null) {
+        if (null === $this->getExpiryDate()) {
             return false;
         }
 
