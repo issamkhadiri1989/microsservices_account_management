@@ -25,7 +25,10 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
 #[ApiResource(
     operations: [
-        new Post(processor: RegisterPostProcessor::class),
+        new Post(
+            processor: RegisterPostProcessor::class,
+            normalizationContext: ['groups' => ['api.user.read']],
+        ),
         new GetCollection(
             normalizationContext: ['groups' => ['api.user.read']],
         ),
@@ -35,6 +38,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
         new Get(
             uriTemplate: '/profile',
             provider: CurrentUserProvider::class,
+            normalizationContext: ['groups' => ['api.user.read', 'api.user.read_details']],
         ),
     ]
 )]
@@ -82,12 +86,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups(groups: ['api.user.read_details'])]
     private ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\Column(nullable: true)]
     private ?bool $locked = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    #[Groups(groups: ['api.user.read_details'])]
     private ?\DateTime $expiryDate = null;
 
     public function getId(): ?int
