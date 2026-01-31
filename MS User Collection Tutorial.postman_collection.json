@@ -1,0 +1,291 @@
+{
+  "info": {
+    "_postman_id": "e775cb1d-ca58-4f1a-ac13-3016d7db2c55",
+    "name": "MS User Collection Tutorial",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "6350037"
+  },
+  "item": [
+    {
+      "name": "List all users",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{API_HOST}}/api/users",
+          "host": [
+            "{{API_HOST}}"
+          ],
+          "path": [
+            "api",
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get User details",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{API_HOST}}/api/users/7",
+          "host": [
+            "{{API_HOST}}"
+          ],
+          "path": [
+            "api",
+            "users",
+            "7"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/ld+json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"firstName\": \"string\",\r\n    \"lastName\": \"string\",\r\n    \"password\": \"string\",\r\n    \"email\": \"string\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{API_HOST}}/api/users",
+          "host": [
+            "{{API_HOST}}"
+          ],
+          "path": [
+            "api",
+            "users"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Register",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/ld+json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"firstName\": \"Issam\",\r\n    \"lastName\": \"Khadiri\",\r\n    \"password\": \"Ragi123123\",\r\n    \"email\": \"khadiri.issam@gmail.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_HOST}}/api/users",
+              "host": [
+                "{{API_HOST}}"
+              ],
+              "path": [
+                "api",
+                "users"
+              ]
+            }
+          },
+          "_postman_previewlanguage": "",
+          "header": [],
+          "cookie": [
+            {
+              "expires": "Invalid Date",
+              "domain": "",
+              "path": ""
+            }
+          ],
+          "body": ""
+        }
+      ]
+    },
+    {
+      "name": "Authenticate",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"identifier\": \"khadiri.issam@gmail.com\",\r\n    \"password\": \"Ragi123123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{API_HOST}}/auth",
+          "host": [
+            "{{API_HOST}}"
+          ],
+          "path": [
+            "auth"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Authenticate",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"identifier\": \"khadiri.issam@gmail.com\",\r\n    \"password\": \"Ragi123123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_HOST}}/auth",
+              "host": [
+                "{{API_HOST}}"
+              ],
+              "path": [
+                "auth"
+              ]
+            }
+          },
+          "_postman_previewlanguage": "",
+          "header": [],
+          "cookie": [
+            {
+              "expires": "Invalid Date",
+              "domain": "",
+              "path": ""
+            }
+          ],
+          "body": ""
+        }
+      ]
+    },
+    {
+      "name": "Current User's profile",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3Njk4NzAyNjMsImV4cCI6MTc2OTg3Mzg2Mywicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoia2hhZGlyaS5pc3NhbUBnbWFpbC5jb20ifQ.oBIPMcrljqmmRdKqmklqrqODpW_aV6jvojQjl8zDfOmGOgyYPIuiCwYzUGZuVAHo-GSJZ6a9zExr-PEW5c8Ab95yTbwm4oFJeisfYiYkmpP80fFfu3UNz4oSlTrrVEMhi5qB7Eil3iMzI_qY1BC0bg1LeAvu222igKQ4GNztcFCyjC7wmHplPrgmaL0cpXCjRLJsWUp5Nb-rXeHzBPkQvLJ4MCYhmbZlIqhu_IKXEHSo2rpVJn_3l0rlDvqs22TKAtfIEBRqCytKwY5zta1Zzryj5ahxOlohcQoG8QV_C8FWHr9ZNDiT7Iu-p_q2DQJUv00KftF_iCMXPvDmC-BmPQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{API_HOST}}/api/profile",
+          "host": [
+            "{{API_HOST}}"
+          ],
+          "path": [
+            "api",
+            "profile"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update my profile",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3Njk4MTE0MjUsImV4cCI6MTc2OTgxNTAyNSwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoia2hhZGlyaS5pc3NhbTNAZ21haWwuY29tIn0.aj_jshBxV1CQpaICd5AN_r1yrRhfe8m8bOvtlDI0QcKDe2YP5VBjgghXhVdvOIdkQeDaslDSgBP88NhM9sUIh0R8H9HYGbE11D75zWJSNMR8WCvSeIF_CQJKrU6KqByM25EsfUauJIBECv0TslqMlRygpLwjLJOLlN68hR2rvTNKKAbiHhn9uLeavD1PRHxqw5WZbBvmRv-8eQwncFFk-aTeX3BgVArx_NQw4H3fczk-nFM2IWykoggF_gSeLfduM0SkUg3g-9wkdvKeSnL2-W9inx6R0oM-73EUVJURrHcfH829ayVM7NlQZQhujW5XT73aHhITTx7bF4Hy8RaGdA",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "{{API_HOST}}/api/profile",
+          "host": [
+            "{{API_HOST}}"
+          ],
+          "path": [
+            "api",
+            "profile"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Change Password",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3Njk4MTU1MTcsImV4cCI6MTc2OTgxOTExNywicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoia2hhZGlyaS5pc3NhbTNAZ21haWwuY29tIn0.IjBpylV6ETejaQy0HQ7e5yCv3n_FYM_ycUa1rD6bmY_Ru1XBMBitoIwCEbTIrZm7gE3dlYXUKjSdovb-n0jNYei4qhxkQF5xrVQoEtFR6Oqfs5lxK3Nd3R7BZb15-ie-jFr7lb8c6hSdCVNkAsj1biStJxJ4BJjQkRkfy8Lo7BfqdFpb8yuohPl4Sk4jNHH6KRqVehSm9osNOJvwA4IQDn7i46ZMxjRqhg_SmKo-NKoEtdvZfUCANmnPEHxugXEzW08YBKh-Xckr5qbpYIpgWxf1Ecbbu5HePH604qDJKSCdr_14e4U_wvBcszmm68xfKd200PLxoFGUE4SoRH-p-w",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"currentPassword\": \"Ragi123123\",\r\n    \"newPassword\": \"ragi123123\",\r\n    \"confirmPassword\": \"ragi123123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{API_HOST}}/api/profile/change-password",
+          "host": [
+            "{{API_HOST}}"
+          ],
+          "path": [
+            "api",
+            "profile",
+            "change-password"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "API_HIST",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "API_HOST",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
